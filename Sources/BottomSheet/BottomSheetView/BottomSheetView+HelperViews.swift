@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 
 internal extension BottomSheetView {
+    @ViewBuilder
     func fullScreenBackground(with geometry: GeometryProxy) -> some View {
         VisualEffectView(visualEffect: self.configuration.backgroundBlurMaterial)
             .opacity(
@@ -31,6 +32,7 @@ internal extension BottomSheetView {
             .transition(.opacity)
     }
     
+    @ViewBuilder
     func bottomSheet(with geometry: GeometryProxy) -> some View {
         VStack(
             alignment: .center,
@@ -80,6 +82,7 @@ internal extension BottomSheetView {
         ))
     }
     
+    @ViewBuilder
     func dragIndicator(with geometry: GeometryProxy) -> some View {
         Button(
             action: {
@@ -114,6 +117,7 @@ internal extension BottomSheetView {
         }
     }
     
+    @ViewBuilder
     func bottomSheetContent(with geometry: GeometryProxy) -> some View {
         // Add ZStack to pin header content and make main content transition correctly for iPad and Mac
         ZStack(alignment: .top) {
@@ -166,6 +170,7 @@ internal extension BottomSheetView {
         }
     }
     
+    @ViewBuilder
     func main(with geometry: GeometryProxy) -> some View {
         // VStack to make frame workaround work
         VStack(alignment: .center, spacing: 0) {
@@ -216,6 +221,7 @@ internal extension BottomSheetView {
         ))
     }
     
+    @ViewBuilder
     var mainGeometryReader: some View {
         GeometryReader { mainGeometry in
             Color.clear
@@ -267,6 +273,7 @@ internal extension BottomSheetView {
     }
     
 #if !os(macOS)
+    @ViewBuilder
     func appleScrollView(with geometry: GeometryProxy) -> some View {
         UIScrollViewWrapper(
             isScrollEnabled: self.$isScrollEnabled,
@@ -281,6 +288,7 @@ internal extension BottomSheetView {
     }
 #endif
     
+    @ViewBuilder
     func header(with geometry: GeometryProxy) -> some View {
         HStack(
             alignment: .top,
@@ -329,6 +337,7 @@ internal extension BottomSheetView {
         )
     }
     
+    @ViewBuilder
     var closeButton: some View {
         Button(action: self.closeSheet) {
             Image(
@@ -349,6 +358,7 @@ internal extension BottomSheetView {
         .buttonStyle(.borderless)
     }
     
+    @ViewBuilder
     var headerGeometryReader: some View {
         GeometryReader { headerGeometry in
             Color.clear
@@ -367,6 +377,7 @@ internal extension BottomSheetView {
         }
     }
     
+    @ViewBuilder
     func bottomSheetBackground(with geometry: GeometryProxy) -> some View {
         Group {
             // Use custom BottomSheet background
